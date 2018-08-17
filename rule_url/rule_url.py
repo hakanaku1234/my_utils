@@ -2,10 +2,13 @@
 # -*- coding: utf-8 -*-
 import re
 import sys
+import getopt
+
 # 脚本功能：根据输入的url生成对应的正则规则
 # 启动方式：python 脚本文件名 url字符串 [可选参数1:slash_num] [可选参数2:clear_params]
 # slash_num用来确定前缀长度：从第几个'/'（不包含://中的'/'）之前截取作为前缀
 # clear_params用来判定是否清除参数
+
 
 class UrlPattern(object):
 
@@ -128,37 +131,48 @@ class UrlPattern(object):
 			return self.url_regexp
 		else:
 			raise UserWarning("I'm sorry, I think i need an upgrade！")
+	
+	@classmethod
+	def help(cls):
+		print("启动方式: pyhon %s url [-n int] [-b bool]" % sys.argv[0])
+		print("\t--help: 获取这份说明")
+		print("\t--num: 指定保留第几个'/'(不包括'://'中的'/')之前的字符,默认为1")
+		print("\t--bool: 指定是否清除参数, 默认为False")
+		print("example:")
+		url = "https://blog.csdn.net/GitChat/article/details/81703229"
+		regexp = cls().rule_url(url)
+		print('\tpython %s "%s"' % (sys.argv[0], url))
+		print("\t输入url为：%s" % url)
+		print("\t正则表达式：%s" % regexp)
 
 
 if __name__ == "__main__":
-	argvs = sys.argv
-	if len(argvs) >= 2:
-		url = argvs[1]
-		slash_num = 1
-		clear_params = False
-		len_argv = len(argvs)
-		if len(argvs) >= 4:
-			if argvs[2] == "-n":
-				slash_num = sys.argv[3].isdigit() and int(sys.argv[3]) or 1
-				if len(argvs) == 6:
-					clear_params = eval(argvs[5])
-			elif argvs[2] == "-b":
-				clear_params = eval(argvs[3])
-				if len(argvs) == 6:
-					slash_num = sys.argv[5].isdigit() and int(sys.argv[5]) or 1
-			else:
-				raise ValueError("params error,start the way:python rule_url.py url [-n 1] [-b False]")
-		url_pattern = UrlPattern(slash_num=slash_num, clear_params=clear_params)
-		regexp = url_pattern.rule_url(url)
-		print(regexp)
-	else:
-		print("example:")
-		url = "https://blog.csdn.net/GitChat/article/details/81703229"
-		url_pattern = UrlPattern()
-		regexp = url_pattern.rule_url(url)
-		print("输入url为：%s" % url)
-		print("正则表达式：%s" % regexp)
-
+	args = sys.argv
+	if len(args) == 1 or args[1] == "-h" or args[1] == "--help":
+		UrlPattern.help()
+		exit(1)
+	url = args[1]
+	slash_num = 1
+	clear_params = False
+	try:
+		opts, _ = getopt.getopt(args[2:], 'hu:n:b:', ["help", "url=", "num=", "bool="])
+	except getopt.GetoptError:
+		UrlPattern.help()
+		sys.exit(1)
+	for opt, val in opts:
+		if opt == "-n" or opt == "--num":
+			slash_num = val.isdigit() and int(val) or 1
+		elif opt == "-b" or opt == "--bool":
+			clear_params = (val == "True" or val == "False") and eval(val) or False
+		elif opt == "-h" or opt == "--help":
+			UrlPattern.help()
+			exit(1)
+		else:
+			UrlPattern.help()
+			exit(1)
+	url_pattern = UrlPattern(slash_num=slash_num, clear_params=clear_params)
+	regexp = url_pattern.rule_url(url)
+	print(regexp)
 
 """
 __title__ = ''

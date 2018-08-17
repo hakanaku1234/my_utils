@@ -1,16 +1,16 @@
-1.ĞèÒªpython»·¾³2.7/3.6
-2.Ê¹ÓÃ·½Ê½:python ½Å±¾Ãû url [¿ÉÑ¡²ÎÊıs£ºÊı×Ö] [¿ÉÑ¡²ÎÊıc£ºTrue/False]
-3.¿ÉÑ¡²ÎÊısµÄ×÷ÓÃ£ºÖ¸¶¨´ÓµÚ¼¸¸ö'/'£¨²»¼ÆËã'://'ÖĞµÄ'/'£©Ö®Ç°µÄ×Ö·û´®×÷ÎªÇ°×º£¬Ö®ºóµÄÕıÔò»¯  Ä¬ÈÏÎª1
-	Èç£ºhttps://blog.csdn.net/dQCFKyQDXYm3F8rB0/article/details/123123
+1.éœ€è¦pythonç¯å¢ƒ2.7/3.6
+2.ä½¿ç”¨æ–¹å¼:python è„šæœ¬å url [å¯é€‰å‚æ•°nï¼šæ•°å­—] [å¯é€‰å‚æ•°bï¼šTrue/False]
+3.å¯é€‰å‚æ•°nçš„ä½œç”¨ï¼šæŒ‡å®šä»ç¬¬å‡ ä¸ª'/'ï¼ˆä¸è®¡ç®—'://'ä¸­çš„'/'ï¼‰ä¹‹å‰çš„å­—ç¬¦ä¸²ä½œä¸ºå‰ç¼€ï¼Œä¹‹åçš„æ­£åˆ™åŒ–  é»˜è®¤ä¸º1
+	å¦‚ï¼šhttps://blog.csdn.net/dQCFKyQDXYm3F8rB0/article/details/123123
 	python rule_url_py2 "https://blog.csdn.net/dQCFKyQDXYm3F8rB0/article/details/123123" 
 	python rule_url_py2 "https://blog.csdn.net/dQCFKyQDXYm3F8rB0/article/details/123123" -s 2
-	¿ÉÑ¡²ÎÊı-sµÄÖµÎª1ºÍ2£¬Ö´ĞĞ½á¹û·Ö±ğÎª£º
-	1£ºhttps://blog\.csdn\.net/([^/]+/){3}[0-9]+
-	2£ºhttps://blog\.csdn\.net/dQCFKyQDXYm3F8rB0/([^/]+/){2}[0-9]+
-4.¿ÉÑ¡²ÎÊıcµÄ×÷ÓÃ£ºÓÃÀ´ÅĞ¶¨ÊÇ·ñÇå³ı²ÎÊı£¬Ä¬ÈÏÖµÎªfalse£¬
-	Èç£ºhttp://sports.sina.com.cn/zl/football/ihht3.shtml?cre=zhuanlanpc&mod=g
+	å¯é€‰å‚æ•°-nçš„å€¼ä¸º1å’Œ2ï¼Œæ‰§è¡Œç»“æœåˆ†åˆ«ä¸ºï¼š
+	1ï¼šhttps://blog\.csdn\.net/([^/]+/){3}[0-9]+
+	2ï¼šhttps://blog\.csdn\.net/dQCFKyQDXYm3F8rB0/([^/]+/){2}[0-9]+
+4.å¯é€‰å‚æ•°bçš„ä½œç”¨ï¼šç”¨æ¥åˆ¤å®šæ˜¯å¦æ¸…é™¤å‚æ•°ï¼Œé»˜è®¤å€¼ä¸ºfalseï¼Œ
+	å¦‚ï¼šhttp://sports.sina.com.cn/zl/football/ihht3.shtml?cre=zhuanlanpc&mod=g
 	python rule_url_py2 "http://sports.sina.com.cn/zl/football/ihht3.shtml?cre=zhuanlanpc&mod=g" 
-	python rule_url_py2 "http://sports.sina.com.cn/zl/football/ihht3.shtml?cre=zhuanlanpc&mod=g" -c True
-	¿ÉÑ¡²ÎÊıcÎªFalseºÍTrueµÄ½á¹û·Ö±ğÎª£º
+	python rule_url_py2 "http://sports.sina.com.cn/zl/football/ihht3.shtml?cre=zhuanlanpc&mod=g" -b True
+	å¯é€‰å‚æ•°bä¸ºFalseå’ŒTrueçš„ç»“æœåˆ†åˆ«ä¸ºï¼š
 	False: http://sports\.sina\.com\.cn/([^/]+/){2}[a-zA-Z0-9]+\.[a-zA-Z]+\?cre=[^&]*&mod;=[^&]*
 	True: http://sports\.sina\.com\.cn/([^/]+/){2}[a-zA-Z0-9]+\.[a-zA-Z]+\
